@@ -37,7 +37,7 @@ const displayItem = (items) =>{
         </div>
         <div class="flex justify-between p-2">
              <p class="text-[8px] mt-2 bg-sky-100 rounded-2xl text-purple-600 px-1">${item.category}</p>
-             <p class="text-[9px] mt-2 text-gray-500 font-medium">${item.rating.rate} (${item.rating.count})</p>
+             <p class="text-[9px] mt-2 text-gray-500 font-medium"><i class="fa-solid fa-star text-amber-400"></i>${item.rating.rate} (${item.rating.count})</p>
              
         </div>
         <h3 class="mt-3 text-lg font-medium">${item.title}</h3>
