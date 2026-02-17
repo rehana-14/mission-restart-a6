@@ -40,7 +40,7 @@ const displayCategory = (catagories) =>{
 
 
 // load allProduct function
-const loadProduct = (cate) =>{
+const loadProduct = () =>{
     const url = `https://fakestoreapi.com/products/`;
      fetch(url)
     .then(res => res.json())
@@ -53,7 +53,41 @@ const loadProduct = (cate) =>{
 }
 loadProduct()
 
-
+// load modal function
+const loadProductDetail = (id) =>{
+    const url = `https://fakestoreapi.com/products/${id}`;
+    console.log(url);
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+         displayProductDetail(data);
+    })
+}
+// display modal function
+const displayProductDetail = (product) =>{
+    console.log(product);
+    const detailsBox = document.getElementById("details-container")
+    detailsBox.innerHTML =`
+      <div class=" bg-gray-200 px-20 py-3 rounded-t-2xl mx-auto"> 
+            <img src=${product.image}  alt="" class="h-40">
+        </div>
+        <div class="p-2">     
+            <p class="text-[12px] mt-2 rounded-2xl text-purple-600">${product.category}</p>
+            <p class="text-[8px] mt-2 text-gray-500 font-medium">${product.rating.rate} (${product.rating.count})</p>
+                
+        </div>
+            <h3 class="mt-3 text-lg font-medium">${product.title}</h3>
+            <p class="font-bold mt-1">$${product.price}</p>
+            <p class="font-semibold mt-1">${product.description}</p>
+        <div class="flex justify-between p-2 mt-2">
+            <button class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
+            <button class="btn btn-active btn-primary  py-0 px-9 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
+        </div>
+    </div>
+    `
+    document.getElementById("detail_modal").showModal();
+}
 
 // display all product function
 const allProduct = (products) =>{
@@ -78,7 +112,7 @@ const allProduct = (products) =>{
         <h3 class="mt-3 text-lg font-medium">${product.title}</h3>
         <p class="font-bold mt-1">$${product.price}</p>
         <div class="flex justify-between p-2 mt-2">
-            <button class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
+            <button onclick="loadProductDetail(${product.id})" class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
             <button class="btn btn-active btn-primary  py-0 px-9 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
         </div>
     </div>`
@@ -158,8 +192,8 @@ const cateProducts = (products) =>{
         <h3 class="mt-3 text-lg font-medium">${product.title}</h3>
         <p class="font-bold mt-1">$${product.price}</p>
         <div class="flex justify-between p-2 mt-2">
-            <button class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
-            <button class="btn btn-active btn-primary  py-0 px-9 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
+            <button onclick="my_modal_5.showModal()" class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
+            <button  onclick="loadProductDetail(${product.id})" class="btn btn-active btn-primary  py-0 px-9 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
         </div>
     </div>`
 
