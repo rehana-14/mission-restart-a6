@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+     <!-- font awasome cdn -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+     <!-- daisy ui and tailwind css -->
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+      <!-- css stylesheel  -->
+       <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <!-- navbar start here -->
+     <header>
+        <div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    
+    <a class="btn btn-ghost text-2xl text-indigo-700 font-bold ml-10 md:ml-20">SwiftCart</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 flex gap-5 text-gray-500 font-semibold">
+      <a href="index.html">Home</a>
+      <a>Product</a>
+      <a>About</a>
+      <a>Contact</a>
+    </ul>
+  </div>
+  <div class="navbar-end text-gray-500">
+    <button id="cart" class="md:mr-20"><i class="fa-solid fa-cart-shopping"></i></button>
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="-1"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-gray-500 font-semibold">
+        
+      <a href="index.html">Home</a>
+      <a>Product</a>
+      <a>About</a>
+      <a>Contact</a>
+       
+      </ul>
+    </div>
+  </div>
+</div>
+</header>
+    <h1 class="text-4xl font-bold text-center mt-5">Our Products</h1>
+    <!-- category -->
+     <section>
+        <div id="cate-container" class="text-center mt-4 mb-10">
+            <button  class="btn text-[12px] rounded-4xl text-gray-600 font-medium active:bg-amber-900">All</button>
+
+            <!-- <button class="btn text-[12px] rounded-4xl text-gray-600 font-medium ml-1.5">Electronics</button>
+            <button class="btn text-[12px] rounded-4xl text-gray-600 font-medium ml-1.5">Jewllery</button>
+            <button class="btn text-[12px] rounded-4xl text-gray-600 font-medium ml-1.5">Men's Clothing</button>
+            <button class="btn text-[12px] rounded-4xl text-gray-600 font-medium ml-1.5">Women's Clothing</button> -->
+
+        </div>
+     </section>
+
+     <!-- product -->
+      <section>
+        
+        <div id="product-parent" class="grid grid-cols-1 md:grid-cols-4 gap-20 ml-30    md:mx-50">
+            
+        </div>
+
+      </section>
+
+
+
+
+    
+    <script src="product.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>

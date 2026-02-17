@@ -5,7 +5,7 @@ const loadItem = () => {
     fetch(url)
     .then(res => res.json())
     .then(data =>{
-        console.log(data);
+        // console.log(data);
         displayItem(data);
     });
 }
@@ -15,19 +15,10 @@ loadItem();
 const displayItem = (items) =>{
     // console.log(items[0].category);
     const itemContainer = document.getElementById("trend-parent");
-    // itemContainer.innerHTML = "";
+    itemContainer.innerHTML = "";
     
    items.forEach(item =>{
 //    console.log(item.rating.rate);
-   const loadImage = () =>{
-    const url = item.image;
-    // console.log(url);
-    fetch(url)
-    .then(res => res.json())
-    .then(data => console.log(data));
-   }
-//    loadImage();
-
    const itemCart = document.createElement("div");
    itemCart.innerHTML = `
        <div class="h-auto w-70 shadow-sm rounded-2xl">
@@ -49,7 +40,9 @@ const displayItem = (items) =>{
     </div>
    `
    if(item.rating.rate >= 4.7){
-    itemContainer.append(itemCart)
+    itemContainer.append(itemCart);
    }
    })
 }
+
+
