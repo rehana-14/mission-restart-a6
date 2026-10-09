@@ -21,8 +21,8 @@ const displayItem = (items) =>{
 //    console.log(item.rating.rate);
    const itemCart = document.createElement("div");
    itemCart.innerHTML = `
-       <div class="h-auto w-70 shadow-sm rounded-2xl">
-        <div class="h-50 w-70 bg-gray-200 px-20 py-3 rounded-t-2xl "> 
+       <div class="h-auto w-auto shadow-sm rounded-2xl flex flex-col justify-between">
+        <div class="h-auto w-auto bg-gray-200 px-5 py-3 rounded-t-2xl "> 
            <img src=${item.image} class = "h-40" /img>
 
         </div>
@@ -31,11 +31,11 @@ const displayItem = (items) =>{
              <p class="text-[9px] mt-2 text-gray-500 font-medium"><i class="fa-solid fa-star text-amber-400"></i>${item.rating.rate} (${item.rating.count})</p>
              
         </div>
-        <h3 class="mt-3 text-lg font-medium">${item.title}</h3>
+        <h3 class="mt-3 text-lg font-semibold">${item.title}</h3>
         <p class="font-bold mt-1">$${item.price}</p>
-        <div class="flex justify-between p-2 mt-2">
-            <button class="btn py-0 px-9 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
-            <button class="btn btn-active btn-primary  py-0 px-9 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
+        <div class="flex justify-between gap-5 p-2 mt-2">
+            <button class="btn px-3 text-[12px]"><i class="fa-regular fa-eye"></i>Details</button>
+            <button class="btn btn-active btn-primary px-3 text-[12px]"><i class="fa-solid fa-cart-shopping"></i>Cart</button>
         </div>
     </div>
    `
@@ -44,5 +44,24 @@ const displayItem = (items) =>{
    }
    })
 }
+
+// search item function
+
+document.getElementById("btn-search").addEventListener("click", ()=>{
+    const input = document.getElementById("input-search");
+    const inputValue = input.value.trim().toLowerCase();
+    console.log(inputValue);
+
+    fetch("https://fakestoreapi.com/products")
+    .then(res => res.json())
+    .then(data => {
+        const allProducts = data;
+        console.log(allProducts);
+        const searchResult = allProducts.filter(product => product.title.toLowerCase().includes(inputValue));
+        console.log(searchResult);
+        displayItem(searchResult);
+    })
+
+})
 
 

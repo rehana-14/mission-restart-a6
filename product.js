@@ -21,15 +21,15 @@ const displayCategory = (catagories) =>{
 
     catagories.forEach(cate =>{
         // console.log(cate);
-        const btn = document.createElement("button")
-        
+        const btn = document.createElement("button");
+        // console.log(btn);       
         btn.innerHTML= `
         <button id="btn-${cate}" class="btn text-[12px] rounded-4xl text-gray-600 font-medium ml-1.5">${cate}</button>
             `
             const btnId= "load"+cate ;
             // console.log(btnId)
-             btn.addEventListener("click",obj[btnId]);
-       catContainer.append(btn);
+            btn.addEventListener("click",obj[btnId]);
+       catContainer.appendChild(btn);
     
       
         })
@@ -69,7 +69,7 @@ const displayProductDetail = (product) =>{
     console.log(product);
     const detailsBox = document.getElementById("details-container")
     detailsBox.innerHTML =`
-      <div class=" bg-gray-200 px-20 py-3 rounded-t-2xl mx-auto"> 
+      <div class="h-auto w-auto bg-gray-200 px-5 py-3 rounded-t-2xl"> 
             <img src=${product.image}  alt="" class="h-40">
         </div>
         <div class="p-2">     
@@ -99,8 +99,8 @@ const allProduct = (products) =>{
         // console.log(product);
         const proCart = document.createElement("div");
         proCart.innerHTML = `
-             <div class="h-auto w-70 shadow-sm rounded-2xl">
-                <div class="h-50 w-70 bg-gray-200 px-20 py-3 rounded-t-2xl "> 
+             <div class="h-auto w-auto shadow-sm rounded-2xl">
+                <div class="h-auto w-auto item-center bg-gray-200 px-5 py-3 rounded-t-2xl "> 
                     <img src=${product.image} class = "h-40" /img>
                 </div>
                 <div class="flex justify-between p-2">
@@ -112,9 +112,9 @@ const allProduct = (products) =>{
                 <p class="font-bold mt-1">$${product.price}</p>
                 <div class="flex justify-between p-2 mt-2">
                     <button onclick="loadProductDetail(${product.id})" 
-                    class="btn py-0 px-9 text-[12px]">
+                    class="btn px-3 text-[12px]">
                     <i class="fa-regular fa-eye"></i>Details</button>
-                    <button class="btn btn-active btn-primary  py-0 px-9 text-[12px]">
+                    <button class="btn btn-active btn-primary px-3 text-[12px]">
                     <i class="fa-solid fa-cart-shopping"></i>Cart</button>
                 </div>
             </div>`
@@ -202,3 +202,22 @@ const cateProducts = (products) =>{
     proContainer.append(proCart);
     });
 }
+
+// SEARCH FUNCTION
+
+document.getElementById("btn-search").addEventListener("click", ()=>{
+    const input = document.getElementById("input-search");
+    const inputValue = input.value.trim().toLowerCase();
+    console.log(inputValue);
+
+    fetch("https://fakestoreapi.com/products")
+    .then(res => res.json())
+    .then(data => {
+        const allData = data;
+        console.log(allData);
+        const searchResult = allData.filter(product => product.title.toLowerCase().includes(inputValue));
+        console.log(searchResult);
+        allProduct(searchResult);
+    })
+
+})
